@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sosomobile/components/TicketItemList.dart';
+import 'package:sosomobile/models/TicketModel.dart';
 import 'package:sosomobile/services/PagerDutyApi.dart';
+import 'package:sosomobile/services/TicketApi.dart';
 
 class TicketListWidget extends StatefulWidget {
   final String? text;
@@ -18,12 +21,13 @@ class _nameState extends State<TicketListWidget> {
   void initState() {
     super.initState();
 
-    PagerDutyApi().getLists();
+    // PagerDutyApi().getLists();
   }
 
   @override
   Widget build(BuildContext context) {
     var itemCount = 5;
+    var ticketList = TicketApi().getAllTicket();
     var myListTile = ListTile(
       shape: RoundedRectangleBorder(
         side: BorderSide(
@@ -50,6 +54,27 @@ class _nameState extends State<TicketListWidget> {
             child: Container(
               child: myListTile,
             ));
+      },
+    );
+
+    var ticketListView = FutureBuilder(
+      future: ticketList,
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('มีข้อผิดพลาดในการโหลดข้อมูล'),
+          );
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          //แสดงข้อมูลที่อ่านได้
+          List<TicketModel> list = snapshot.data;
+          return TicketItemList(list);
+          //อะไรที่โหลดจาก api ใช้ ListView.builder
+        } else {
+          // แสดง loading ..
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
       },
     );
 

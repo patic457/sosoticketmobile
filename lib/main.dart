@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sosomobile/screens/CreateTicketScreen.dart';
-import 'package:sosomobile/screens/DashboardScreen.dart';
-import 'package:sosomobile/screens/MyHomeScreen.dart';
+import 'package:provider/provider.dart';
+import 'package:sosomobile/models/TicketModel.dart';
+import 'package:sosomobile/views/CreateTicketScreen.dart';
+import 'package:sosomobile/views/DashboardScreen.dart';
+import 'package:sosomobile/views/MyHomeScreen.dart';
 
 void main() {
   runApp(MyApp());

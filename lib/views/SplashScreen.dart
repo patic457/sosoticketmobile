@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sosomobile/screens/DashboardScreen.dart';
-import 'package:sosomobile/screens/MyHomeScreen.dart';
+import 'package:sosomobile/views/DashboardScreen.dart';
+import 'package:sosomobile/views/MyHomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
