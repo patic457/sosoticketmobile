@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:sosomobile/models/TicketModel.dart';
+import 'package:http/http.dart' as http;
 
 class TicketApi {
   _setHeaders() =>
@@ -22,21 +23,38 @@ class TicketApi {
   //   }
   // }
 
+  // Future<List<TicketModel?>> getAllTicket() async {
+  //   String baseUrl = "https://sosoapi.herokuapp.com/api/ticket";
+  //   List<TicketModel> ticketList = [];
+  //   try {
+  //     var response = await Dio().get(
+  //       baseUrl,
+  //       options: Options(headers: _setHeaders()),
+  //     );
+  //     if (response.statusCode == 200) {
+  //       var jsonData = response.data;
+  //       ticketList = ticketModelFromJson(jsonData);
+  //       // print("ticketList : " + ticketList.toString());
+  //     } else {
+  //       throw Exception("Ticket StatusCode Not 200");
+  //     }
+  //   } catch (e) {
+  //     // print("Error : " + e.toString());
+  //   }
+  //   return ticketList;
+  // }
+
   Future<List<TicketModel>?> getAllTicket() async {
     String baseUrl = "https://sosoapi.herokuapp.com/api/ticket";
-    try {
-      var response = await Dio().get(baseUrl,
-          options: Options(
-            headers: _setHeaders(),
-          ));
-      var jsonData = response.data;
-      if (response.statusCode == 200) {
-        return ticketModelFromJson(response.data);
-      } else {
-        throw Exception("Ticket StatusCode Not 200");
-      }
-    } catch (e) {
-      print("Error : " + e.toString());
+    //retrun List ? List สามารถเป็น null ได้
+    final res = await http.get(
+      Uri.parse(baseUrl),
+      headers: _setHeaders(),
+    );
+    if (res.body != null) {
+      return ticketModelFromJson(res.body);
+    } else {
+      return null;
     }
   }
 }
