@@ -4,7 +4,8 @@ import 'package:sosomobile/services/TicketApi.dart';
 
 Widget ticketItemList(var ticket) {
   var itemCount = ticket.length;
-  var txtProblemName = ticket.problemName;
+  // var txtProblemName = ticket.problemName.toString();
+  print(ticket.toString());
   var myListTile = ListTile(
     shape: RoundedRectangleBorder(
       side: BorderSide(
@@ -17,7 +18,7 @@ Widget ticketItemList(var ticket) {
       backgroundColor: Color(0xff6ae792),
       child: Text('T', style: TextStyle(color: Colors.black)),
     ),
-    subtitle: Text(txtProblemName),
+    subtitle: Text(''),
     trailing: const Icon(Icons.more_vert),
   );
   var listView = ListView.builder(
