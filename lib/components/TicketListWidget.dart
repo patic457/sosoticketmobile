@@ -36,10 +36,17 @@ class _nameState extends State<TicketListWidget> {
             child: Text('มีข้อผิดพลาดในการโหลดข้อมูล'),
           );
         } else if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            List<TicketModel> list = snapshot.data;
+            return ticketItemList(list);
+          } else {
+            return Container();
+          }
+
           //แสดงข้อมูลที่อ่านได้
-          List<TicketModel> list = snapshot.data;
+
           // print("List : " + list.toString());
-          return TicketItemList(list);
+
           //อะไรที่โหลดจาก api ใช้ ListView.builder
         } else {
           // แสดง loading ..

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sosomobile/models/TicketModel.dart';
 import 'package:sosomobile/services/TicketApi.dart';
 
-Widget ticketItemList(List<TicketModel> ticket) {
+Widget ticketItemList(var ticket) {
   var itemCount = ticket.length;
+  var txtProblemName = ticket.problemName;
   var myListTile = ListTile(
     shape: RoundedRectangleBorder(
       side: BorderSide(
@@ -16,7 +17,7 @@ Widget ticketItemList(List<TicketModel> ticket) {
       backgroundColor: Color(0xff6ae792),
       child: Text('T', style: TextStyle(color: Colors.black)),
     ),
-    subtitle: const Text(''),
+    subtitle: Text(txtProblemName),
     trailing: const Icon(Icons.more_vert),
   );
   var listView = ListView.builder(
