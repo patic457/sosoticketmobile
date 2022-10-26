@@ -44,7 +44,7 @@ class TicketApi {
   //   return ticketList;
   // }
 
-  Future<List<TicketModel>?> getAllTicket() async {
+  Future<TicketModel> getAllTicket() async {
     String baseUrl = "https://sosoapi.herokuapp.com/api/ticket";
     //retrun List ? List สามารถเป็น null ได้
     final res = await http.get(
@@ -52,9 +52,10 @@ class TicketApi {
       headers: _setHeaders(),
     );
     if (res.body != null) {
-      return ticketModelFromJson(res.body);
+      // return ticketModelFromJson(res.body);
+      return TicketModel.fromJson(json.decode(res.body));
     } else {
-      return null;
+      throw Exception('Failed to load post');
     }
   }
 }
