@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sosomobile/components/mockupItemList.dart';
 import 'package:sosomobile/components/ticketItemList.dart';
+import 'package:sosomobile/components/ticketItemListv2.dart';
 import 'package:sosomobile/models/TicketModel.dart';
 import 'package:sosomobile/services/TicketApi.dart';
 
@@ -38,7 +39,7 @@ class _nameState extends State<TicketListWidget> {
         } else if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             List<TicketModel> list = snapshot.data;
-            return ticketItemList(list);
+            return ticketItemListv2(list);
           } else {
             return Container();
           }

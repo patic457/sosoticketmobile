@@ -5,6 +5,7 @@ import 'package:sosomobile/models/TicketModel.dart';
 import 'package:sosomobile/views/CreateTicketScreen.dart';
 import 'package:sosomobile/views/DashboardScreen.dart';
 import 'package:sosomobile/views/MyHomeScreen.dart';
+import 'package:sosomobile/views/SplashScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +28,20 @@ List<GoRoute> goRoutes = [
         pageBuilder: (context, state) => MaterialPage(
           fullscreenDialog: true,
           child: CreateTicketScreen(),
+        ),
+      ),
+      GoRoute(
+        path: 'ticketDetail',
+        pageBuilder: (context, state) => MaterialPage(
+          fullscreenDialog: true,
+          child: CreateTicketScreen(),
+        ),
+      ),
+      GoRoute(
+        path: 'login',
+        pageBuilder: (context, state) => MaterialPage(
+          fullscreenDialog: true,
+          child: SplashScreen(),
         ),
       ),
     ],

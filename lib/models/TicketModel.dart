@@ -7,23 +7,26 @@ String ticketModelToJson(List<TicketModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class TicketModel {
-  final String id;
-  final String status;
-  final String description;
-  final String problemName;
+  String id;
+  String status;
+  String description;
+  String problemName;
+  String criticalityName;
 
-  const TicketModel({
+  TicketModel({
     required this.id,
     required this.status,
     required this.description,
     required this.problemName,
+    required this.criticalityName,
   });
 
   factory TicketModel.fromJson(Map<String, dynamic> json) => TicketModel(
-        id: json["id"] == null ? null : json["id"],
-        description: json["description"] == null ? null : json["description"],
-        problemName: json["problemName"] == null ? null : json["problemName"],
-        status: json["status"] == null ? null : json["status"],
+        id: json["id"],
+        description: json["description"],
+        problemName: json["problemName"],
+        status: json["status"],
+        criticalityName: json["criticalityName"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -31,19 +34,6 @@ class TicketModel {
         "status": status == null ? null : status,
         "description": description == null ? null : description,
         "problemName": problemName == null ? null : problemName,
+        "criticalityName": criticalityName == null ? null : criticalityName,
       };
-
-  // TicketModel.fromJson(Map<String, dynamic> json)
-  //     : id = json['id'],
-  //       status = json['status'],
-  //       description = json['description'],
-  //       problemName = json['problemName'];
-
-  // Map<String, dynamic> toJson() => {
-  //       'id': id,
-  //       'status': status,
-  //       'description': description,
-  //       'problemName': problemName,
-  //     };
-
 }
