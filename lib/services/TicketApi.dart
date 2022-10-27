@@ -57,4 +57,19 @@ class TicketApi {
       throw Exception('Failed to load post');
     }
   }
+
+  Future<TicketModel> getTicket(id) async {
+    var baseUrl = "https://sosoapi.herokuapp.com/api/ticket/" + id.toString();
+    //retrun List ? List สามารถเป็น null ได้
+    final res = await http.get(
+      Uri.parse(baseUrl),
+      headers: _setHeaders(),
+    );
+    if (res.body != null) {
+      // print(res.body);
+      return ticketDetailModelFromJson(res.body);
+    } else {
+      throw Exception('Failed to load post');
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sosomobile/models/TicketModel.dart';
 import 'package:sosomobile/views/CreateTicketScreen.dart';
+import 'package:sosomobile/views/TicketDetailScreen.dart';
 
 tagColor(criticalityName) {
   Color color = Color(0xff6ae792);
@@ -15,17 +16,13 @@ tagColor(criticalityName) {
 
 Widget ticketItemListv2(List<TicketModel> news) {
   myListTile(context, newsModel) {
-    void _ticketDetail() {
+    goTicketDetail(id) {
       // context.go('/createTicket');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => CreateTicketScreen()),
+        MaterialPageRoute(builder: (context) => TicketDetailScreen(id: id)),
       );
       // arguments: {'id': newsModel.id},
-    }
-
-    void _createTicket() {
-      context.go('/createTicket');
     }
 
     return ListTile(
@@ -46,7 +43,11 @@ Widget ticketItemListv2(List<TicketModel> news) {
       ),
       subtitle: Text('TICKET ID: ' + newsModel.id),
       // trailing: const Icon(Icons.more_vert),
-      onTap: _ticketDetail,
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => TicketDetailScreen(id: newsModel.id)),
+      ),
     );
   }
 

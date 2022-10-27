@@ -6,6 +6,11 @@ List<TicketModel> ticketModelFromJson(String str) => List<TicketModel>.from(
 String ticketModelToJson(List<TicketModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+TicketModel ticketDetailModelFromJson(String str) =>
+    TicketModel.fromJson(json.decode(str));
+
+String ticketDetailModelToJson(TicketModel data) => json.encode(data.toJson());
+
 class TicketModel {
   String id;
   String status;
