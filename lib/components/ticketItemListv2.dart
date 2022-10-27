@@ -16,14 +16,8 @@ tagColor(criticalityName) {
 
 Widget ticketItemListv2(List<TicketModel> news) {
   myListTile(context, newsModel) {
-    goTicketDetail(id) {
-      // context.go('/createTicket');
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => TicketDetailScreen(id: id)),
-      );
-      // arguments: {'id': newsModel.id},
-    }
+    var ticketId = newsModel.id;
+    var ticketTitle = 'TICKET ID: ${ticketId}';
 
     return ListTile(
       title: Text(newsModel.problemName),
@@ -41,13 +35,14 @@ Widget ticketItemListv2(List<TicketModel> news) {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      subtitle: Text('TICKET ID: ' + newsModel.id),
+      subtitle: Text(ticketTitle),
       // trailing: const Icon(Icons.more_vert),
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => TicketDetailScreen(id: newsModel.id)),
       ),
+
     );
   }
 
