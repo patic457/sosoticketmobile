@@ -21,6 +21,7 @@ class _DetailScreenScreenState extends State<TicketDetailScreen> {
   @override
   Widget build(BuildContext context) {
     var ticketId = widget.id;
+
     void _back() {
       Navigator.pop(context);
     }
@@ -46,7 +47,7 @@ class _DetailScreenScreenState extends State<TicketDetailScreen> {
         ),
       ),
     );
-    var body = TicketDetailWidget(id: ticketId);
+    var body = ticketscreen;
     var icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
     var appbar = AppBar(
       backgroundColor: const Color(0xffb73c23a),

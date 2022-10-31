@@ -25,7 +25,7 @@ class _MyWidgetState extends State<TicketDetailWidget> {
             children: [
               Text(
                 detail.status,
-                style: TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0),
               ),
               Text(detail.criticalityName),
               Text(detail.problemCategoryName),
@@ -58,7 +58,7 @@ class _MyWidgetState extends State<TicketDetailWidget> {
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           TicketModel detail = snapshot.data;
-          return ticketDetailWidget;
+          return ticketDetailField(detail);
         } else {
           return const Center(child: CircularProgressIndicator());
         }
