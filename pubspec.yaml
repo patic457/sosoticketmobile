@@ -50,12 +50,13 @@ dependencies:
   #สำหรับจัดการ State Management
   provider: ^6.0.4
 
-  # network:
-  #   path: ../network
+  network:
+    path: network
   # bloc: 
   #   path: ../bloc
   # repository:
   #   path: ../repository
+
 
 
 dev_dependencies:

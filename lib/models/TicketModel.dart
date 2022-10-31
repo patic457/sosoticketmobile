@@ -14,16 +14,30 @@ String ticketDetailModelToJson(TicketModel data) => json.encode(data.toJson());
 class TicketModel {
   String id;
   String status;
-  String description;
-  String problemName;
   String criticalityName;
+  String problemCategoryName;
+  String problemName;
+  String description;
+  String teamId;
+  String dueDate;
+  String createdAt;
+  String createdBy;
+  String updatedAt;
+  String updatedBy;
 
   TicketModel({
     required this.id,
     required this.status,
-    required this.description,
-    required this.problemName,
     required this.criticalityName,
+    required this.problemCategoryName,
+    required this.problemName,
+    required this.description,
+    required this.teamId,
+    required this.dueDate,
+    required this.createdAt,
+    required this.createdBy,
+    required this.updatedAt,
+    required this.updatedBy,
   });
 
   factory TicketModel.fromJson(Map<String, dynamic> json) => TicketModel(
@@ -32,6 +46,13 @@ class TicketModel {
         problemName: json["problemName"],
         status: json["status"],
         criticalityName: json["criticalityName"],
+        problemCategoryName: json["problemCategoryName"],
+        teamId: json["teamId"],
+        dueDate: json["dueDate"],
+        createdAt: json["createdAt"],
+        createdBy: json["createdBy"],
+        updatedAt: json["updatedAt"],
+        updatedBy: json["updatedBy"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,5 +61,13 @@ class TicketModel {
         "description": description == null ? null : description,
         "problemName": problemName == null ? null : problemName,
         "criticalityName": criticalityName == null ? null : criticalityName,
+        "problemCategoryName":
+            problemCategoryName == null ? null : problemCategoryName,
+        "teamId": teamId == null ? null : teamId,
+        "dueDate": dueDate == null ? null : dueDate,
+        "createdAt": createdAt == null ? null : createdAt,
+        "createdBy": createdBy == null ? null : createdBy,
+        "updatedAt": updatedAt == null ? null : updatedAt,
+        "updatedBy": updatedBy == null ? null : updatedBy,
       };
 }

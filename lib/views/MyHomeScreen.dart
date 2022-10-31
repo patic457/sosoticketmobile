@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sosomobile/views/DashboardScreen.dart';
 import 'package:sosomobile/components/AppBarWidget.dart';
+import 'package:sosomobile/views/HistoryScreen.dart';
 
 class MyHomeScreen extends StatefulWidget {
   const MyHomeScreen({Key? key, required this.title}) : super(key: key);
@@ -23,7 +24,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
 
   final List<Widget> _screenWidget = <Widget>[
     DashboardScreen(),
-    DashboardScreen(),
+    HistoryScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,19 +44,15 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
     Widget floatingActionButton = FloatingActionButton(
       // backgroundColor: Colors.green[900],
       backgroundColor: Colors.green.shade500,
-      child: Icon(FontAwesomeIcons.plus),
+      child: const Icon(FontAwesomeIcons.plus),
       onPressed: _createTicket,
     );
 
     List<BottomNavigationBarItem> _menuBar = <BottomNavigationBarItem>[
       const BottomNavigationBarItem(
-        icon: Icon(FontAwesomeIcons.house),
-        label: 'Home',
-      ),
+          icon: Icon(FontAwesomeIcons.house), label: 'Home'),
       const BottomNavigationBarItem(
-        icon: Icon(FontAwesomeIcons.clock),
-        label: 'History',
-      ),
+          icon: Icon(FontAwesomeIcons.clock), label: 'History'),
     ];
 
     Widget bottomNavigationBar = BottomNavigationBar(

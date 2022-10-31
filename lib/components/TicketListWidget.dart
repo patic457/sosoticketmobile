@@ -7,10 +7,12 @@ import 'package:sosomobile/services/TicketApi.dart';
 
 class TicketListWidget extends StatefulWidget {
   final String? text;
+  final String listviewWidget;
 
   const TicketListWidget({
     Key? key,
     this.text,
+    this.listviewWidget = 'ticket',
   }) : super(key: key);
 
   @override
@@ -25,12 +27,17 @@ class _nameState extends State<TicketListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var myListView = mockupItemList();
-    var ticketList = TicketApi().getAllTicket();
-    // var ticketListView = ticketItemList(ticketList);
+    getApi(String menu) {
+      // var futureList = mockupItemList();
+      var futureList = TicketApi().getAllTicket();
+      if (menu == 'history') {
+        futureList = TicketApi().getAllTicket();
+      }
+      return futureList;
+    }
 
     var ticketListView = FutureBuilder(
-      future: ticketList,
+      future: getApi(widget.listviewWidget),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasError) {
           return const Center(

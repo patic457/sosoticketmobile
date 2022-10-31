@@ -20,23 +20,33 @@ class TicketDetailScreen extends StatefulWidget {
 class _DetailScreenScreenState extends State<TicketDetailScreen> {
   @override
   Widget build(BuildContext context) {
+    var ticketId = widget.id;
     void _back() {
       Navigator.pop(context);
     }
 
+    var ticketRow = Row(
+      children: [
+        Column(
+          children: [],
+        ),
+      ],
+    );
+
     Container ticketscreen = Container(
+      alignment: Alignment.center,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            TicketDetailWidget(id: widget.id),
+            TicketDetailWidget(id: ticketId),
           ],
         ),
       ),
     );
-    var body = ticketscreen;
+    var body = TicketDetailWidget(id: ticketId);
     var icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
     var appbar = AppBar(
       backgroundColor: const Color(0xffb73c23a),
@@ -47,7 +57,7 @@ class _DetailScreenScreenState extends State<TicketDetailScreen> {
           onPressed: _back,
         ),
       ),
-      title: Text('Ticket Detail'),
+      title: Text("TICKET ID : " + ticketId),
       centerTitle: true,
     );
     Widget scaffold = Scaffold(
