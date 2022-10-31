@@ -19,10 +19,19 @@ class TicketDetailWidget extends StatefulWidget {
 class _MyWidgetState extends State<TicketDetailWidget> {
   @override
   Widget build(BuildContext context) {
+    var aa = ElevatedButton(
+      // textColor: Colors.white,
+      // color: Colors.black,
+      child: Text("Search"),
+      onPressed: () {},
+      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+    );
+
     var getTicketDetail = TicketApi().getTicket(widget.id);
     ticketDetailField(detail) => Container(
           child: Column(
             children: [
+              aa,
               Text(
                 detail.status,
                 style: const TextStyle(fontSize: 16.0),

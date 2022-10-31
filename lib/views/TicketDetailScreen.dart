@@ -34,17 +34,14 @@ class _DetailScreenScreenState extends State<TicketDetailScreen> {
       ],
     );
 
-    Container ticketscreen = Container(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            TicketDetailWidget(id: ticketId),
-          ],
-        ),
+    Padding ticketscreen = Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TicketDetailWidget(id: ticketId),
+        ],
       ),
     );
     var body = ticketscreen;
@@ -58,7 +55,8 @@ class _DetailScreenScreenState extends State<TicketDetailScreen> {
           onPressed: _back,
         ),
       ),
-      title: Text("TICKET ID : " + ticketId),
+      // title: Text("TICKET ID : " + ticketId),
+      title: Text('TICKET DETAIL'),
       centerTitle: true,
     );
     Widget scaffold = Scaffold(
