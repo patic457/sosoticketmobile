@@ -38,6 +38,15 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
     {"name": "User", "desc": "Having End User access rights", "role": 6},
   ];
   final createTicketController = TextEditingController();
+
+// v2
+  final impactedServiceController = TextEditingController();
+  final assignToController = TextEditingController();
+  final titleController = TextEditingController();
+  final urgencyController = TextEditingController();
+  final descriptionController = TextEditingController();
+//
+
   var cateItems = ["AIS Fiber", "AIS PLAY", "AIS Store"];
   var dropdownvalue = 'AIS Fiber';
 
@@ -51,6 +60,8 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
     // createTicketCallApi();
     // createTicketTextField(createTicketController, chosenValue);
   }
+
+  void _createIncident() {}
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +88,73 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
         labelText: "Problem",
       ),
     );
+    var v1 = [
+      dropdownCategoryField,
+      const SizedBox(height: 15),
+      textField,
+      const SizedBox(height: 20),
+      ButtonWidget(
+        text: "Create Ticket",
+        onPressed: _createTicket,
+      ),
+    ];
+
+    var v2 = [
+      TextField(
+        autofocus: false,
+        controller: impactedServiceController,
+        decoration: const InputDecoration(
+          // hintText: txt,
+          border: OutlineInputBorder(),
+          labelText: 'Impacted Service',
+        ),
+      ),
+      const SizedBox(height: 15),
+      TextField(
+        autofocus: false,
+        controller: assignToController,
+        decoration: const InputDecoration(
+          // hintText: txt,
+          border: OutlineInputBorder(),
+          labelText: 'Assign to',
+        ),
+      ),
+      const SizedBox(height: 15),
+      TextField(
+        autofocus: false,
+        controller: titleController,
+        decoration: const InputDecoration(
+          // hintText: txt,
+          border: OutlineInputBorder(),
+          labelText: 'Title',
+        ),
+      ),
+      const SizedBox(height: 15),
+      TextField(
+        autofocus: false,
+        controller: urgencyController,
+        decoration: const InputDecoration(
+          // hintText: txt,
+          border: OutlineInputBorder(),
+          labelText: 'Urgency',
+        ),
+      ),
+      const SizedBox(height: 15),
+      TextField(
+        autofocus: false,
+        controller: descriptionController,
+        decoration: const InputDecoration(
+          // hintText: txt,
+          border: OutlineInputBorder(),
+          labelText: 'Description',
+        ),
+      ),
+      const SizedBox(height: 20),
+      ButtonWidget(
+        text: "Create Incident",
+        onPressed: _createIncident,
+      ),
+    ];
 
     Container createTicketForm = Container(
       child: Padding(
@@ -84,16 +162,7 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            dropdownCategoryField,
-            const SizedBox(height: 15),
-            textField,
-            const SizedBox(height: 20),
-            ButtonWidget(
-              text: "Create Ticket",
-              onPressed: _createTicket,
-            ),
-          ],
+          children: v2,
         ),
       ),
     );
