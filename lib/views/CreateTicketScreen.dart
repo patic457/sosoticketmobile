@@ -13,6 +13,7 @@ class CreateTicketScreen extends StatefulWidget {
 }
 
 class _CreateTicketScreenState extends State<CreateTicketScreen> {
+  final _formKey = GlobalKey<FormState>();
   final List<Map<String, dynamic>> _roles = [
     {"name": "Super Admin", "desc": "Having full access rights", "role": 1},
     {
@@ -61,7 +62,13 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
     // createTicketTextField(createTicketController, chosenValue);
   }
 
-  void _createIncident() {}
+  void _createIncident() {
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Processing Data')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +95,12 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
         labelText: "Problem",
       ),
     );
+
+    var btn = ElevatedButton(
+      onPressed: _createIncident,
+      child: const Text('Create Incident'),
+    );
+
     var v1 = [
       dropdownCategoryField,
       const SizedBox(height: 15),
@@ -140,16 +153,8 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
         ),
       ),
       const SizedBox(height: 15),
-      TextField(
-        autofocus: false,
-        controller: descriptionController,
-        decoration: const InputDecoration(
-          // hintText: txt,
-          border: OutlineInputBorder(),
-          labelText: 'Description',
-        ),
-      ),
       const SizedBox(height: 20),
+      btn,
       ButtonWidget(
         text: "Create Incident",
         onPressed: _createIncident,
@@ -167,9 +172,14 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       ),
     );
 
+    var form = Form(
+      key: _formKey,
+      child: createTicketForm,
+    );
+
     Widget scaffold = Scaffold(
       appBar: appbar,
-      body: SingleChildScrollView(child: createTicketForm),
+      body: SingleChildScrollView(child: form),
     );
 
     return scaffold;
